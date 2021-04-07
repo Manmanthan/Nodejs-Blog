@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  div.container
+    h1 Register
+    form(method='POST', action='/users/register')
+      #form-group
+        label Name:
+        input.form-control.col-md-6(name='name', type='text')
+      #form-group
+        label Email:
+        input.form-control.col-md-6(name='email', type='text')
+      #form-group
+        label Username:
+        input.form-control.col-md-6(name='username',type='text')
+      #form-group
+        label Password:
+        input.form-control.col-md-6(name='password',type='password')
+      #form-group
+        label Confirm:
+        input.form-control.col-md-6(name='password2',type='password')
+      br
+      input.btn.btn-primary.col-md-6(type='submit',value='Submit')

@@ -1,0 +1,57 @@
+doctype html
+html
+  head
+    title Blogster
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    link(rel='stylesheet' href='/css/style.css')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+
+  body
+    nav.navbar.navbar-expand-lg.navbar-light.sticky-top
+      a.navbar-brand(href='/') 
+        i.fa.fa-bolt.mr-1(aria-hidden='true')
+        | Blogster
+      button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item(id="home-page")
+            a.nav-link(href='/')
+              i.fa.fa-home.mr-1(aria-hidden='true')
+              | Home 
+        ul.navbar-nav.ml-auto
+          if user
+            li.nav-item(id="add-article")
+              a.nav-link(href='/articles/add') 
+                i.fa.fa-lightbulb-o.mr-1(aria-hidden='true')
+                | Add Article
+            li.nav-item
+              a.nav-link(href='/users/logout') 
+                i.fa.fa-sign-out.mr-1(aria-hidden='true')
+                | Logout
+          else
+            li.nav-item(id="register")
+              a.nav-link(href='/users/register') 
+                i.fa.fa-paper-plane-o.mr-1(aria-hidden='true')
+                | Register
+                
+            li.nav-item(id="login")
+              a.nav-link(href='/users/login') 
+                i.fa.fa-user.mr-1(aria-hidden='true')
+                | Login
+    container
+      != messages('message', locals)
+      if errors
+        each error, i in errors
+          div(class="alert alert-danger") #{error.msg}
+      block content
+      br
+
+    footer.footer
+      .footer-copyright.text-center.py-1
+        | &copy; 2021 Copyright:
+        a(href='https://www.nagarro.com/')  Nagarro Training
+
+    script(src='/bower_components/jquery/dist/jquery.js')  
+    script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+    script(src='/js/main.js')  

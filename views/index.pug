@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  
+  div.container.mt-4
+    if articles.length != 0
+      dev.row.mb-4
+        each article, i in articles
+              div.col-md-4.d-flex.align-items-stretch.mb-4
+                div.card
+                  div.card-body.flex-column.d-flex
+                    h5.card-title 
+                      = article.title
+                    p.card-text.mb-2.text-truncate
+                      = article.body
+                    a(href="/articles/"+article._id).btn.btn-secondary.mt-auto Read More
+    else
+      h5 No new articles for now. Please feel free to add articles.
