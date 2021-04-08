@@ -13,8 +13,7 @@ let articleSchema = mongoose.Schema({
   body: {
     type: String,
     required: true
-  },
-  likes: [mongoose.Schema.Types.ObjectId]
+  }
 });
 
 let Article = module.exports = mongoose.model('Article', articleSchema);
